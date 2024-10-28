@@ -34,6 +34,19 @@ public class AdminService {
 	}
 
 
+	public AdminResponse updateAdmin(String adminId, AdminRequest adminRequest) {
+		
+	   return adminRepository.findById(adminId)
+	   					.map((exAdmin)->{
+	   						adminMapper.mapToAdmin(adminRequest, exAdmin);
+	   						return adminRepository.save(exAdmin);
+	   					})
+	   					.map(adminMapper::mapToAdminResponse)
+	   					.orElseThrow(null);
+	   					
+	}
+
+
 	
 
 	
