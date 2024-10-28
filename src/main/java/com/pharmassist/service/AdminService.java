@@ -21,40 +21,36 @@ public class AdminService {
 		this.adminMapper = adminMapper;
 	}
 
-	
+	// SAVE ADMIN
 	public AdminResponse saveAdmin(AdminRequest adminRequest) {
 		Admin admin = adminRepository.save(adminMapper.mapToAdmin(adminRequest, new Admin()));
 		return adminMapper.mapToAdminResponse(admin);
 	}
 	
+	// FIND ADMIN
 	public AdminResponse findAdmin(String adminId) {
-		
 		return adminRepository.findById(adminId)
 						.map((admin)->adminMapper.mapToAdminResponse(admin))
 						.orElseThrow(null);
-		
 	}
 
-
+	// UPDATE ADMIN
 	public AdminResponse updateAdmin(String adminId, AdminRequest adminRequest) {
-		
 	   return adminRepository.findById(adminId)
 	   					.map((exAdmin)->{
 	   						adminMapper.mapToAdmin(adminRequest, exAdmin);
 	   						return adminRepository.save(exAdmin);
 	   					})
 	   					.map(adminMapper::mapToAdminResponse)
-	   					.orElseThrow(null);
-	   					
+	   					.orElseThrow(null);			
 	}
 
-
+	// FIND ALL ADMINS
 	public List<AdminResponse> findAllAdmins() {
 		return adminRepository.findAll()
 						.stream()
 						.map(adminMapper::mapToAdminResponse)
-						.toList();
-															
+						.toList();														
 	}
 
 
