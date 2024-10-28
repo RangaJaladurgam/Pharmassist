@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.pharmassist.entity.Admin;
+import com.pharmassist.requestdto.AdminRequest;
 import com.pharmassist.responsedto.AdminResponse;
 import com.pharmassist.service.AdminService;
 import com.pharmassist.util.AppResponseBuilder;
@@ -22,6 +23,13 @@ public class AdminController {
 		this.adminService = adminService;
 		this.response = response;
 	}
+	
+	
+	public ResponseEntity<ResponseStructure<AdminResponse>> saveAdmin(AdminRequest adminRequest){
+		AdminResponse adminResponse =  adminService.saveAdmin(adminRequest);
+		return response.success(HttpStatus.CREATED, "Admin Created", adminResponse);
+	}
+	
 	
 	@GetMapping("/admins/{adminId}")
 	public ResponseEntity<ResponseStructure<AdminResponse>> findAdmin(@PathVariable String adminId){
