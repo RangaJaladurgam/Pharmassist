@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.pharmassist.entity.Admin;
 import com.pharmassist.mapper.AdminMapper;
 import com.pharmassist.repository.AdminRepository;
+import com.pharmassist.requestdto.AdminRequest;
 import com.pharmassist.responsedto.AdminResponse;
 
 @Service
@@ -19,6 +20,11 @@ public class AdminService {
 	}
 
 	
+	public AdminResponse saveAdmin(AdminRequest adminRequest) {
+		Admin admin = adminRepository.save(adminMapper.mapToAdmin(adminRequest, new Admin()));
+		return adminMapper.mapToAdminResponse(admin);
+	}
+	
 	public AdminResponse findAdmin(String adminId) {
 		
 		return adminRepository.findById(adminId)
@@ -26,6 +32,9 @@ public class AdminService {
 						.orElseThrow(null);
 		
 	}
+
+
+	
 
 	
 
