@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import com.pharmassist.entity.Admin;
+import com.pharmassist.responsedto.AdminResponse;
 import com.pharmassist.service.AdminService;
 import com.pharmassist.util.AppResponseBuilder;
 import com.pharmassist.util.ResponseStructure;
@@ -21,8 +22,8 @@ public class AdminController {
 	}
 	
 	
-	public ResponseEntity<ResponseStructure<Admin>> findAdmin(int adminId){
-		Admin admin = adminService.findUser(adminId);
+	public ResponseEntity<ResponseStructure<AdminResponse>> findAdmin(int adminId){
+		AdminResponse admin = adminService.findUser(adminId);
 		return response.success(HttpStatus.FOUND,"Admin found by Id", admin);
 	}
 	

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.pharmassist.entity.Admin;
 import com.pharmassist.repository.AdminRepository;
+import com.pharmassist.responsedto.AdminResponse;
 
 @Service
 public class AdminService {
@@ -15,7 +16,12 @@ public class AdminService {
 		this.adminRepository = adminRepository;
 	}
 
+	public AdminResponse findUser(int adminId) {
+		
+		return null;
+	}
 
+	
 	
 	
 
