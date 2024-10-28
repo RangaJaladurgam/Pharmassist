@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.pharmassist.entity.Admin;
 import com.pharmassist.requestdto.AdminRequest;
@@ -24,7 +25,7 @@ public class AdminController {
 		this.response = response;
 	}
 	
-	
+	@PostMapping("/")
 	public ResponseEntity<ResponseStructure<AdminResponse>> saveAdmin(AdminRequest adminRequest){
 		AdminResponse adminResponse =  adminService.saveAdmin(adminRequest);
 		return response.success(HttpStatus.CREATED, "Admin Created", adminResponse);
