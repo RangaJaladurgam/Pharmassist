@@ -22,7 +22,7 @@ public class AdminController {
 	}
 	
 	
-	public ResponseEntity<ResponseStructure<AdminResponse>> findAdmin(int adminId){
+	public ResponseEntity<ResponseStructure<AdminResponse>> findAdmin(String adminId){
 		AdminResponse admin = adminService.findUser(adminId);
 		return response.success(HttpStatus.FOUND,"Admin found by Id", admin);
 	}
