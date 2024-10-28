@@ -1,5 +1,7 @@
 package com.pharmassist.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.pharmassist.entity.Admin;
@@ -44,6 +46,15 @@ public class AdminService {
 	   					.map(adminMapper::mapToAdminResponse)
 	   					.orElseThrow(null);
 	   					
+	}
+
+
+	public List<AdminResponse> findAllAdmins() {
+		return adminRepository.findAll()
+						.stream()
+						.map(adminMapper::mapToAdminResponse)
+						.toList();
+															
 	}
 
 
