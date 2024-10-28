@@ -5,6 +5,7 @@ public class AdminRequest {
 	private String email;
 	private String phoneNumber;
 	private String password;
+	
 	public String getEmail() {
 		return email;
 	}
