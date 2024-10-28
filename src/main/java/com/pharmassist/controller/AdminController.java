@@ -1,5 +1,7 @@
 package com.pharmassist.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -43,7 +45,13 @@ public class AdminController {
 	@PutMapping("/admins/{adminId}")
 	public ResponseEntity<ResponseStructure<AdminResponse>> updateAdmin(@PathVariable String adminId,@RequestBody AdminRequest adminRequest){
 		AdminResponse adminResponse = adminService.updateAdmin(adminId,adminRequest);
-		return response.success(HttpStatus.FOUND, "Admin Updated", adminResponse);
+		return response.success(HttpStatus.OK, "Admin Updated", adminResponse);
+	}
+	
+	@GetMapping("/admins")
+	public ResponseEntity<ResponseStructure<List<AdminResponse>>> findAllAdmins(){
+		List<AdminResponse> adminResponses = adminService.findAllAdmins();
+		return response.success(HttpStatus.FOUND, "Admins Found", adminResponses);
 	}
 	
 }
