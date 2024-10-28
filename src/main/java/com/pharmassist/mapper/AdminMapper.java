@@ -1,9 +1,12 @@
 package com.pharmassist.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.pharmassist.entity.Admin;
 import com.pharmassist.requestdto.AdminRequest;
 import com.pharmassist.responsedto.AdminResponse;
 
+@Component
 public class AdminMapper {
 	
 	public Admin mapToAdmin(AdminRequest adminRequest,Admin admin) {
@@ -13,7 +16,7 @@ public class AdminMapper {
 		return admin;
 	}
 	
-	public AdminResponse mapToAminResponse(Admin admin) {
+	public AdminResponse mapToAdminResponse(Admin admin) {
 		AdminResponse adminResponse = new AdminResponse();
 		adminResponse.setAdminId(admin.getAdminId());
 		adminResponse.setEmail(admin.getEmail());
